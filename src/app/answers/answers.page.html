@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>answers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+<div class="ion-padding">
+  <ion-label color="primary">
+    <h2>Politics Question Quiz</h2>
+  </ion-label>
+  <ion-label color="primary">
+    <h3>Right Answers</h3>
+  </ion-label>
+</div>
+<div class="ion-padding">
+  <div id="answers" *ngFor="let qoption of questions; let i=index;">
+
+    <ion-text>{{qoption}}</ion-text>
+  </div>
+</div>
+  <ion-button (click)="goHome()">End Quiz</ion-button>
+</ion-content>

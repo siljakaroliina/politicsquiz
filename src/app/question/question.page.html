@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Question
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-content [fullscreen]="true">
+
+
+    <div id="container" class="ion-padding">
+      
+        <ion-label>
+          <h2>Politics Question Quiz</h2>
+        </ion-label>
+     
+        <ion-text>
+          <h6>Question {{questionsService.getIndexOfActiveQuestion()}}/{{questionsService.getNumberOfQuestions()}}</h6>
+        </ion-text>
+     
+
+      <ion-item>
+        <ion-text>
+          <h6>Select the correct option</h6>
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="primary">
+          <h4>{{questionsService.getQuoteOfActiveQuestion()}}</h4>
+        </ion-text>
+      </ion-item>
+
+      <ion-list>
+        <ion-radio-group>
+          <ion-item *ngFor="let qoption of questionsService.getOptionsOfActiveQuestion(); let i=index">
+            <ion-label>{{qoption}}</ion-label>
+            <ion-radio *ngIf=!questionsService.isOptionSelected() (click)="checkOption(i)">
+            </ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+       <ion-button [disabled]="!questionsService.isOptionSelected()" slot="end" shape="round" color="success" (click)="continue()"
+        tappable>Continue</ion-button>
+    
+      <ion-item><ion-text *ngIf=questionsService.isOptionSelected()>
+        <h6>{{feedback}}</h6>
+      </ion-text></ion-item>
+    </div>
+  </ion-content>
+
+</ion-content>
